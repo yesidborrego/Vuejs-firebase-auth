@@ -1,13 +1,27 @@
 <template>
-  <div id="app">
+  <div id="app" class="container mt-5">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link :to="{name: 'Index'}" v-if="userExist">Home | </router-link>
+      <router-link :to="{name: 'Signup'}" v-if="!userExist">Signup | </router-link>
+      <router-link :to="{name: 'Login'}" v-if="!userExist">Login</router-link>
+      <a @click="logoutUser" v-if="userExist">Log Out</a>
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+  import { mapActions, mapGetters } from 'vuex';
+  export default {
+    name: 'App',
+    computed: {
+      ...mapGetters(['userExist'])
+    },
+    methods: {
+      ...mapActions(['logoutUser'])
+    }
+  }
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
