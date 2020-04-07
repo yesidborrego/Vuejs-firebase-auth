@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="container mt-5">
-    <div id="nav">
+  <div id="app" class="container text-left mt-5">
+    <div id="nav" class="text-center">
       <router-link :to="{name: 'Index'}" v-if="userExist">Home | </router-link>
       <router-link :to="{name: 'Signup'}" v-if="!userExist">Signup | </router-link>
       <router-link :to="{name: 'Login'}" v-if="!userExist">Login</router-link>
